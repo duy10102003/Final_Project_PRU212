@@ -6,10 +6,12 @@ public class BombController : MonoBehaviour
 {
     [Header("Bomb")]
     public KeyCode inputKey = KeyCode.LeftShift;
+
     public GameObject bombPrefab;
     public float bombFuseTime = 3f;
     public int bombAmount = 1;
     private int bombsRemaining;
+    private float countTime = 0;
 
     [Header("Explosion")]
     public Explosion explosionPrefab;
@@ -28,8 +30,20 @@ public class BombController : MonoBehaviour
 
     private void Update()
     {
-        if (bombsRemaining > 0 && Input.GetKeyDown(inputKey)) {
+        if (bombsRemaining > 0 && Input.GetKeyDown(inputKey))
+        {
             StartCoroutine(PlaceBomb());
+        }
+        if (bombsRemaining > 20 || bombFuseTime == 0)
+        {
+            countTime += Time.deltaTime;
+        }
+        if (countTime > 5)
+        {
+            bombAmount -= 20;
+            bombsRemaining-=20;
+            bombFuseTime = 3f;
+            countTime = 0;
         }
     }
 
@@ -63,7 +77,8 @@ public class BombController : MonoBehaviour
 
     private void Explode(Vector2 position, Vector2 direction, int length)
     {
-        if (length <= 0) {
+        if (length <= 0)
+        {
             return;
         }
 
@@ -100,10 +115,16 @@ public class BombController : MonoBehaviour
         bombAmount++;
         bombsRemaining++;
     }
+    public void AddBomb(int num)
+    {
+        bombAmount += 20;
+        bombsRemaining += 20;
+    }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Bomb")) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Bomb"))
+        {
             other.isTrigger = false;
         }
     }
