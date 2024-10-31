@@ -27,12 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929385142751814526}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &929385142751814520
 SpriteRenderer:
@@ -45,6 +46,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -95,6 +97,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -150,6 +171,9 @@ MonoBehaviour:
   destructionTime: 1
   itemSpawnChance: 0.2
   spawnableItems:
-  - {fileID: 5681734161811793622, guid: f832a23e62e95c4449daa85b028d43d5, type: 3}
-  - {fileID: 7266525813312433372, guid: 29385601a56e22b4faac44675679793e, type: 3}
-  - {fileID: 1671571660335848563, guid: 9c2bdb21ab8265641bc0fc2d66b5f0f1, type: 3}
+  - {fileID: 2307250016307497216, guid: 50af8fcabf290e845b356ea6537e5165, type: 3}
+  - {fileID: 5198274464102770039, guid: f09a94d3477de5649b6d0676d51d043f, type: 3}
+  - {fileID: 5648650326280602766, guid: 9db9dde30e3db4b4ba6ca36706a52b62, type: 3}
+  - {fileID: 316102051379537015, guid: ead1a2843ecc5c043a2db25c4d3e2321, type: 3}
+  - {fileID: 5630689269089286832, guid: db1271c98678f9843b892f4c1b33596e, type: 3}
+  - {fileID: 3217901595834837490, guid: d01edc2cc3aeb764e9b308134b9bbe4b, type: 3}

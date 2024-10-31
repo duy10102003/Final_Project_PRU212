@@ -89,5 +89,12 @@ public class MovementController : MonoBehaviour
         gameObject.SetActive(false);
         GameManager.Instance.CheckWinState();
     }
-
+    public void SetDisable()
+    {
+        this.enabled = false;
+    }
+    public void SetEnable()
+    {
+        this.enabled = true;
+    }
 }

@@ -81,6 +81,7 @@ public class CharacterSelection : MonoBehaviour
         {
             player1Confirmed = true;
             Debug.Log("Player 1 ch?n nhân v?t: " + characterImages[player1Selection].name);
+            //X? lý logic chuy?n nhân v?t sang Bomberman Scence
             // C?p nh?t hình ?nh trong b?ng ?i?m cho Player 1
             //scoreboardManager.UpdateCharacterImages(characterImages[player1Selection].sprite, scoreboardManager.GetPlayer2Sprite());
         }
@@ -88,6 +89,7 @@ public class CharacterSelection : MonoBehaviour
         {
             player2Confirmed = true;
             Debug.Log("Player 2 ch?n nhân v?t: " + characterImages[player2Selection].name);
+            //X? lý logic chuy?n nhân v?t sang Bomberman Scence
             // C?p nh?t hình ?nh trong b?ng ?i?m cho Player 2
             //scoreboardManager.UpdateCharacterImages(scoreboardManager.GetPlayer1Sprite(), characterImages[player2Selection].sprite);
         }
