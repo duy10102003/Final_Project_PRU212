@@ -26,6 +26,7 @@ public class MapGenderer : MonoBehaviour
         player.GetComponent<BombController>().destructibleTiles = destrucable;
         player.GetComponent<BombController>().explosionLayerMask = 1;
         GameObject map = new GameObject("MapGrid");
+        map.transform.position = Vector3.zero;
         map.gameObject.AddComponent<Grid>();
 
 
@@ -55,6 +56,8 @@ public class MapGenderer : MonoBehaviour
         WallBuild(wall, InDestructible);
         InDestrucableBuild(wall, InDestructible);
         DestrucableBuild(destrucable, Destructible);
+
+        map.transform.position = new Vector3(0.5f, 0.5f, 0);
     }
 
     // Update is called once per frame
