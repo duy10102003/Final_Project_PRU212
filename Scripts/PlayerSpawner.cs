@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -54,12 +55,17 @@ public class PlayerSpawner : MonoBehaviour
     public void SpawnPlayerWithSelection(int playerIndex, int characterIndex)
     {
         GameObject selectedPrefab = prefabs[characterIndex];
-
+        Tilemap stage = GameObject.Find("Destructibles").GetComponent<Tilemap>();
+        GameObject uiControl = GameObject.Find("ScoreboardManager");
         if (playerIndex == 1)
         {
             
             player1Instance = Instantiate(selectedPrefab, spawnPositions[0], Quaternion.identity);
             player1Instance.SetActive(true);
+            player1Instance.GetComponent<BombController>().destructibleTiles = stage;
+            player1Instance.GetComponent<BombController>().explosionLayerMask = 1;
+            player1Instance.GetComponent<MovementController>().player = 1;
+            player1Instance.GetComponent<MovementController>().gameUIManager = uiControl.GetComponent<GameUIManager>();
             Debug.Log("Player 1 đã chọn " + selectedPrefab.name);
             
         }
@@ -67,6 +73,11 @@ public class PlayerSpawner : MonoBehaviour
         {
             player2Instance = Instantiate(selectedPrefab, spawnPositions[1], Quaternion.identity);
             player2Instance.SetActive(true);
+            player2Instance.GetComponent<BombController>().destructibleTiles = stage;
+            player2Instance.GetComponent<BombController>().explosionLayerMask = 1;
+            player2Instance.GetComponent<MovementController>().player = 2;
+            player2Instance.GetComponent<MovementController>().gameUIManager = uiControl.GetComponent<GameUIManager>();
+
             Debug.Log("Player 2 đã chọn " + selectedPrefab.name);
         }
     }

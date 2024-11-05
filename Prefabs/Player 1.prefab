@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3050781142144489090}
   - component: {fileID: 931663271831341777}
   - component: {fileID: 2444325042830455188}
+  - component: {fileID: -5916427830290629713}
   m_Layer: 3
   m_Name: Player 1
   m_TagString: Player
@@ -148,6 +149,18 @@ MonoBehaviour:
   explosionRadius: 3
   destructibleTiles: {fileID: 0}
   destructiblePrefab: {fileID: -8738203639632321532, guid: 1ac7a5f8ae90ed04aa34c0753307c241, type: 3}
+--- !u!114 &-5916427830290629713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2731493127084695583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7343c0bfc7524714ab3c19fb86f2a72c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3595662654978172079
 GameObject:
   m_ObjectHideFlags: 0

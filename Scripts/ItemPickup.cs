@@ -24,7 +24,7 @@ public class ItemPickup : MonoBehaviour
         switch (type)
         {
             case ItemType.Item_Buff_Health:
-
+                player.GetComponent<MovementController>().Addhealth();
                 break;
 
             case ItemType.Item_Buff_BoomMulti:
@@ -40,7 +40,7 @@ public class ItemPickup : MonoBehaviour
                 break;
                 
             case ItemType.Item_Buff_Point:
-                
+                player.GetComponent<MovementController>().AddScore(100);
                 break;
 
             case ItemType.Item_Skill_Frozen:

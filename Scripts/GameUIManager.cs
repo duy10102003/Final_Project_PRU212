@@ -82,7 +82,16 @@ public class GameUIManager : MonoBehaviour
             GameOver(); // G?i hàm game over n?u không còn m?ng
         }
     }
-
+    public void AddLifeP1()
+    {
+        player1Lives++; 
+        UpdateLivesText();
+    }
+    public void AddLifeP2()
+    {
+        player2Lives++;
+        UpdateLivesText();
+    }
     public void AddPlayer2Score(int points)
     {
         player2Score += points; // C?ng ?i?m cho Player 2
