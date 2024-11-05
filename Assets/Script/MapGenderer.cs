@@ -110,7 +110,6 @@ public class MapGenderer : MonoBehaviour
 
     void WallBuild()
     {
-        // Create a single wall tile around the perimeter of the map
         for (int x = 0; x < SizeX; x++)
         {
             wall.SetTile(new Vector3Int(x, 0, 0), WallTile); // Bottom wall
@@ -139,7 +138,6 @@ public class MapGenderer : MonoBehaviour
                     continue;
                 }
 
-                // Set a higher rate threshold to increase spawn chance (e.g., 60%)
                 int rate = Random.Range(1, 100);
                 if (rate < 60 && wall.GetTile(new Vector3Int(x, y, 0)) == null)
                 {
@@ -168,7 +166,6 @@ public class MapGenderer : MonoBehaviour
                 int rate = Random.Range(1, 100);
                 Vector3Int tilePosition = new Vector3Int(x, y, 0);
 
-                // Place the indestructible tile in the indestructibleLayer
                 if (rate > 40 && wall.GetTile(tilePosition) == null && destructable.GetTile(tilePosition) == null)
                 {
                     indestructibleLayer.SetTile(tilePosition, InDestructible);
