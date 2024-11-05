@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
@@ -7,17 +7,17 @@ public class GameUIManager : MonoBehaviour
     public Text player1LivesText; // Text ?? hi?n th? s? m?ng Player 1
     public Text player2ScoreText; // Text ?? hi?n th? ?i?m Player 2
     public Text player2LivesText; // Text ?? hi?n th? s? m?ng Player 2
-    //public Image player1Image; // Hình ?nh c?a Player 1
-    //public Image player2Image; // Hình ?nh c?a Player 2
+    //public Image player1Image; // HÃ¬nh ?nh c?a Player 1
+    //public Image player2Image; // HÃ¬nh ?nh c?a Player 2
 
     private int player1Score = 0; // ?i?m kh?i ??u Player 1
     private int player1Lives = 3; // S? m?ng kh?i ??u Player 1
     private int player2Score = 0; // ?i?m kh?i ??u Player 2
     private int player2Lives = 3; // S? m?ng kh?i ??u Player 2
 
-    public Button pauseButton; // Tham chi?u ??n nút Pause/Resume
-    public Sprite pauseSprite; // Sprite cho nút Pause
-    public Sprite resumeSprite; // Sprite cho nút Resume
+    public Button pauseButton; // Tham chi?u ??n nÃºt Pause/Resume
+    public Sprite pauseSprite; // Sprite cho nÃºt Pause
+    public Sprite resumeSprite; // Sprite cho nÃºt Resume
 
     private bool isPaused = false;
 
@@ -31,7 +31,7 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    // Getter và Setter cho Player2Score
+    // Getter vÃ  Setter cho Player2Score
     public int Player2Score
     {
         get { return player2Score; }
@@ -52,18 +52,18 @@ public class GameUIManager : MonoBehaviour
 
     //public void UpdateCharacterImages(Sprite player1Sprite, Sprite player2Sprite)
     //{
-    //    player1Image.sprite = player1Sprite; // C?p nh?t hình ?nh cho Player 1
-    //    player2Image.sprite = player2Sprite; // C?p nh?t hình ?nh cho Player 2
+    //    player1Image.sprite = player1Sprite; // C?p nh?t hÃ¬nh ?nh cho Player 1
+    //    player2Image.sprite = player2Sprite; // C?p nh?t hÃ¬nh ?nh cho Player 2
     //}
 
     //public Sprite GetPlayer1Sprite()
     //{
-    //    return player1Image.sprite; // Tr? v? hình ?nh c?a Player 1
+    //    return player1Image.sprite; // Tr? v? hÃ¬nh ?nh c?a Player 1
     //}
 
     //public Sprite GetPlayer2Sprite()
     //{
-    //    return player2Image.sprite; // Tr? v? hình ?nh c?a Player 2
+    //    return player2Image.sprite; // Tr? v? hÃ¬nh ?nh c?a Player 2
     //}
 
     public void AddPlayer1Score(int points)
@@ -79,7 +79,7 @@ public class GameUIManager : MonoBehaviour
 
         if (player1Lives <= 0)
         {
-            GameOver(); // G?i hàm game over n?u không còn m?ng
+            GameOver(); // G?i hÃ m game over n?u khÃ´ng cÃ²n m?ng
         }
     }
 
@@ -96,7 +96,7 @@ public class GameUIManager : MonoBehaviour
 
         if (player2Lives <= 0)
         {
-            GameOver(); // G?i hàm game over n?u không còn m?ng
+            GameOver(); // G?i hÃ m game over n?u khÃ´ng cÃ²n m?ng
         }
     }
 
@@ -115,24 +115,24 @@ public class GameUIManager : MonoBehaviour
 
     public void TogglePause()
     {
-        isPaused = !isPaused; // ??o ng??c tr?ng thái t?m d?ng
+        isPaused = !isPaused; // ??o ng??c tr?ng thÃ¡i t?m d?ng
 
-        // T?m d?ng ho?c khôi ph?c th?i gian
+        // T?m d?ng ho?c khÃ´i ph?c th?i gian
         Time.timeScale = isPaused ? 0 : 1;
 
-        UpdatePauseButtonSprite(); // C?p nh?t sprite nút
+        UpdatePauseButtonSprite(); // C?p nh?t sprite nÃºt
     }
 
     private void UpdatePauseButtonSprite()
     {
-        // Thay ??i sprite c?a nút tùy thu?c vào tr?ng thái
+        // Thay ??i sprite c?a nÃºt tÃ¹y thu?c vÃ o tr?ng thÃ¡i
         pauseButton.image.sprite = isPaused ? resumeSprite : pauseSprite;
     }
 
     private void GameOver()
     {
-        // Th?c hi?n hành ??ng khi trò ch?i k?t thúc
+        // Th?c hi?n hÃ nh ??ng khi trÃ² ch?i k?t thÃºc
         Debug.Log("Game Over");
-        // B?n có th? chuy?n sang c?nh Game Over ho?c hi?n th? menu
+        // B?n cÃ³ th? chuy?n sang c?nh Game Over ho?c hi?n th? menu
     }
 }
