@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
+using Unity.VisualScripting;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    public static PlayerSpawner Instance { get; private set; }
+    //public static PlayerSpawner Instance { get; private set; }
 
     [SerializeField]
     private GameObject[] prefabs; // Các prefab cho các nhân vật khác nhau
@@ -19,25 +20,28 @@ public class PlayerSpawner : MonoBehaviour
     private GameObject player2Instance;
     [SerializeField]
     public GameObject gameData;
-    private void Awake()
-    {
-        // Thiết lập singleton
-        if (Instance != null && Instance != this)
-        {
-            Debug.Log("An instance of PlayerSpawner already exists. Destroying this instance.");
-            Destroy(gameObject);
-            return;
-        }
+    //private void Awake()
+    //{
+    //    // Thiết lập singleton
+    //    if (Instance != null && Instance != this)
+    //    {
+    //        Debug.Log("An instance of PlayerSpawner already exists. Destroying this instance.");
+    //        Destroy(gameObject);
+    //        return;
+    //    }
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
+
+
+    //    Instance = this;
+    //    DontDestroyOnLoad(gameObject);
+    //}
+
 
     void Start()
     {
         playerPool = new List<GameObject>();
-        PlayerSpawner.Instance.SpawnPlayerWithSelection(1, GameDataNgu.Instance.player1);
-        PlayerSpawner.Instance.SpawnPlayerWithSelection(2, GameDataNgu.Instance.player2);
+        SpawnPlayerWithSelection(1, GameDataNgu.Instance.player1);
+        SpawnPlayerWithSelection(2, GameDataNgu.Instance.player2);
         if (prefabs.Length < 2 || spawnPositions.Length < 2)
         {
             Debug.LogError("Yêu cầu ít nhất 2 prefab và 2 vị trí spawn.");
@@ -53,27 +57,27 @@ public class PlayerSpawner : MonoBehaviour
     }
 
     public void SpawnPlayerWithSelection(int playerIndex, int characterIndex)
-    { 
+    {
         GameObject selectedPrefab = prefabs[characterIndex];
-      //  Tilemap stage = GameObject.Find("DestructibleLayer").GetComponent<Tilemap>();
+        //  Tilemap stage = GameObject.Find("DestructibleLayer").GetComponent<Tilemap>();
         GameObject uiControl = GameObject.Find("ScoreboardManager");
         if (playerIndex == 1)
         {
-            
+
             player1Instance = Instantiate(selectedPrefab, spawnPositions[0], Quaternion.identity);
             player1Instance.SetActive(true);
-           // player1Instance.GetComponent<BombController>().destructibleTiles = stage;
+            // player1Instance.GetComponent<BombController>().destructibleTiles = stage;
             player1Instance.GetComponent<BombController>().explosionLayerMask = 3;
             player1Instance.GetComponent<MovementController>().player = 1;
             player1Instance.GetComponent<MovementController>().gameUIManager = uiControl.GetComponent<GameUIManager>();
             Debug.Log("Player 1 đã chọn " + selectedPrefab.name);
-            
+
         }
         else if (playerIndex == 2)
         {
             player2Instance = Instantiate(selectedPrefab, spawnPositions[5], Quaternion.identity);
             player2Instance.SetActive(true);
-           // player2Instance.GetComponent<BombController>().destructibleTiles = stage;
+            // player2Instance.GetComponent<BombController>().destructibleTiles = stage;
             player2Instance.GetComponent<BombController>().explosionLayerMask = 3;
             player2Instance.GetComponent<MovementController>().player = 2;
             player2Instance.GetComponent<MovementController>().gameUIManager = uiControl.GetComponent<GameUIManager>();

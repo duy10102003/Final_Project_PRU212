@@ -38,7 +38,7 @@ public class EndGameManager : MonoBehaviour
     public void RestartGame()
     {
 
-        SceneManager.LoadScene("Bomberman");
+        SceneManager.LoadScene("SelectCharacter");
     }
 
     public void BackToMenu()

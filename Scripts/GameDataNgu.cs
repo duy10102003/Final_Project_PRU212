@@ -8,15 +8,15 @@ public class GameDataNgu : MonoBehaviour
     public static GameDataNgu Instance;
     private void Awake()
     {
-        // Kiểm tra xem Instance đã được thiết lập chưa
+       
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Giữ cho đối tượng không bị xóa khi chuyển cảnh
+            DontDestroyOnLoad(gameObject); 
         }
         else
         {
-            Destroy(gameObject); // Nếu đã có Instance, hủy đối tượng mới tạo
+            Destroy(gameObject);      
         }
     }
 }

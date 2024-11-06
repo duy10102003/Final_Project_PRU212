@@ -55,6 +55,7 @@ public class ItemPickup : MonoBehaviour
                 break;
 
             case ItemType.Item_Skill_FlameLine:
+                player.GetComponent<MovementController>().activeSkill = true;
                 player.GetComponent<BombController>().bombFuseTime = 0;
                 break;
         }

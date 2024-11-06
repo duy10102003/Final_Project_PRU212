@@ -3,12 +3,14 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementController : MonoBehaviour
 {
+    
     private Rigidbody2D rb;
     private Vector2 direction = Vector2.down;
     public float speed = 5f;
     [SerializeField]
     public GameUIManager gameUIManager;
     public int player;
+    public bool activeSkill = false;
 
     [Header("Input")]
     public KeyCode inputUp = KeyCode.W;
@@ -51,16 +53,23 @@ public class MovementController : MonoBehaviour
             gameUIManager.GetComponent<GameUIManager>().AddPlayer1Score(score);
         }
     }
+    
     public void Removehealth()
-    {
-        if (player == 1)
-        {
-            gameUIManager.GetComponent<GameUIManager>().RemovePlayer1Life();
+    { 
+        if(!activeSkill){
+
+            if (player == 1)
+            {
+                gameUIManager.GetComponent<GameUIManager>().RemovePlayer1Life();
+            }
+            else
+            {
+                gameUIManager.GetComponent<GameUIManager>().RemovePlayer2Life();
+            }
         }
-        else
-        {
-            gameUIManager.GetComponent<GameUIManager>().RemovePlayer2Life();
-        }
+
+
+       
     }
     
     private void Update()
