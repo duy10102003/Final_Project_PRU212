@@ -1,15 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-public class GameDataMap : MonoBehaviour
+public class GameDataNgu : MonoBehaviour
 {
-    public int map;
-    public List<TileBase> destructibleTiles;
-    public List<TileBase> indestructibleTiles;
-    public List<TileBase> wallTiles;
-    public List<TileBase> grassTiles;
-    public static GameDataMap Instance;
+    public int player1;
+    public int player2;
+    public static GameDataNgu Instance;
     private void Awake()
     {
         // Kiểm tra xem Instance đã được thiết lập chưa
@@ -24,4 +20,3 @@ public class GameDataMap : MonoBehaviour
         }
     }
 }
-

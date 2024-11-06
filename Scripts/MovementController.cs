@@ -6,6 +6,9 @@ public class MovementController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 direction = Vector2.down;
     public float speed = 5f;
+    [SerializeField]
+    public GameUIManager gameUIManager;
+    public int player;
 
     [Header("Input")]
     public KeyCode inputUp = KeyCode.W;
@@ -26,7 +29,40 @@ public class MovementController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         activeSpriteRenderer = spriteRendererDown;
     }
-
+    public void Addhealth()
+    {
+        if (player == 1)
+        {
+            gameUIManager.GetComponent<GameUIManager>().AddLifeP1();
+        }
+        else
+        {
+            gameUIManager.GetComponent<GameUIManager>().AddLifeP2();
+        }
+    }
+    public void AddScore(int score)
+    {
+        if (player == 1)
+        {
+            gameUIManager.GetComponent<GameUIManager>().AddPlayer1Score(score);
+        }
+        else
+        {
+            gameUIManager.GetComponent<GameUIManager>().AddPlayer1Score(score);
+        }
+    }
+    public void Removehealth()
+    {
+        if (player == 1)
+        {
+            gameUIManager.GetComponent<GameUIManager>().RemovePlayer1Life();
+        }
+        else
+        {
+            gameUIManager.GetComponent<GameUIManager>().RemovePlayer2Life();
+        }
+    }
+    
     private void Update()
     {
         if (Input.GetKey(inputUp)) {
@@ -67,6 +103,7 @@ public class MovementController : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Explosion")) {
             DeathSequence();
+            Debug.Log("Va cham voi bom r");
         }
     }
 
@@ -82,10 +119,12 @@ public class MovementController : MonoBehaviour
         spriteRendererDeath.enabled = true;
 
         Invoke(nameof(OnDeathSequenceEnded), 1.25f);
+        Debug.Log("Va cham voi bom r");
     }
 
     private void OnDeathSequenceEnded()
     {
+        Debug.Log("Va cham voi bom r");
         gameObject.SetActive(false);
         GameManager.Instance.CheckWinState();
     }

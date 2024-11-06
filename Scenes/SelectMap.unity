@@ -409,13 +409,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: 0
   destructibleTiles:
-  - {fileID: 11400000, guid: bd0a10fa6446e4342b4aa734f0340aa5, type: 2}
-  - {fileID: 11400000, guid: bd0a10fa6446e4342b4aa734f0340aa5, type: 2}
-  - {fileID: 11400000, guid: bd0a10fa6446e4342b4aa734f0340aa5, type: 2}
+  - {fileID: 11400000, guid: f297be3270f2529499d41247ea31ef69, type: 2}
+  - {fileID: 11400000, guid: 8287df3cc6051aa499a474a45ca8267d, type: 2}
+  - {fileID: 11400000, guid: 6de6d203c33ef6e409cdb654f1605b15, type: 2}
   indestructibleTiles:
-  - {fileID: 11400000, guid: 2ad2254e3287b0b43b3c876a5f0348fd, type: 2}
-  - {fileID: 11400000, guid: 2ad2254e3287b0b43b3c876a5f0348fd, type: 2}
-  - {fileID: 11400000, guid: 2ad2254e3287b0b43b3c876a5f0348fd, type: 2}
+  - {fileID: 11400000, guid: 9cedaa52c8bc98c45a726893f3510d06, type: 2}
+  - {fileID: 11400000, guid: 585b26215649e254db065f878d391caa, type: 2}
+  - {fileID: 11400000, guid: f141d709dc92f93488291460015c1291, type: 2}
+  wallTiles:
+  - {fileID: 11400000, guid: b1fb1ebf589fbaa4da86e9868647b8af, type: 2}
+  - {fileID: 11400000, guid: 88fb404ce519966448e76e4bbe4c62b1, type: 2}
+  - {fileID: 11400000, guid: c2ab6c5d29018f745842d3480b7cc35d, type: 2}
+  grassTiles:
+  - {fileID: 11400000, guid: 5aba1fb88bdb90e4ca136aea08fbb8ea, type: 2}
+  - {fileID: 11400000, guid: cb8699588a3c83646a8b482de4b27ab3, type: 2}
+  - {fileID: 11400000, guid: 9d261fa57a186304eb7c71bcd3920f52, type: 2}
 --- !u!1 &1120894518
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,6 +44,7 @@ public class BombController : MonoBehaviour
             bombsRemaining-=20;
             bombFuseTime = 3f;
             countTime = 0;
+            OnEnable();
         }
     }
 
