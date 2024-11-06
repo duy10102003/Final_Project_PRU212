@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class BombController : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class BombController : MonoBehaviour
     public int bombAmount = 1;
     private int bombsRemaining;
     private float countTime = 0;
+    private int saveBomStatus = 1;
 
     [Header("Explosion")]
     public Explosion explosionPrefab;
@@ -40,10 +43,13 @@ public class BombController : MonoBehaviour
         }
         if (countTime > 5)
         {
-            bombAmount -= 20;
-            bombsRemaining-=20;
+            gameObject.GetComponent<MovementController>().activeSkill = false;
+            //bombAmount -= 20;
+            //bombsRemaining-=20;
+            bombAmount = saveBomStatus;
             bombFuseTime = 3f;
             countTime = 0;
+            OnEnable();
         }
     }
 
@@ -117,6 +123,7 @@ public class BombController : MonoBehaviour
     }
     public void AddBomb(int num)
     {
+        saveBomStatus = bombAmount;
         bombAmount += 20;
         bombsRemaining += 20;
     }

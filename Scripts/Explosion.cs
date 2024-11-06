@@ -24,4 +24,29 @@ public class Explosion : MonoBehaviour
         Destroy(gameObject, seconds);
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Va cham r heheheheheh");
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<MovementController>().Removehealth();
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Va cham r ");
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<MovementController>().Removehealth();
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("s");
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<MovementController>().Removehealth();
+        }
+    }
+
 }

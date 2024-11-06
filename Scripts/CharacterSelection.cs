@@ -1,20 +1,19 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class CharacterSelection : MonoBehaviour
 {
-    public Image[] characterImages; 
-    public Image arrow1; 
-    public Image arrow2; 
-    public int player1Selection = 0; 
-    public int player2Selection = 1; 
+    public Image[] characterImages;
+    public Image arrow1;
+    public Image arrow2;
+    public int player1Selection = 0;
+    public int player2Selection = 1;
 
-    private bool player1Confirmed = false; 
+    private bool player1Confirmed = false;
     private bool player2Confirmed = false;
 
-    //public GameUIManager scoreboardManager;
-
+    //public PlayerSpawner playerSpawner;
     void Start()
     {
         UpdateSelection();
@@ -24,26 +23,26 @@ public class CharacterSelection : MonoBehaviour
     {
         HandlePlayer1Input();
         HandlePlayer2Input();
-        CheckIfBothPlayersConfirmed(); 
+        CheckIfBothPlayersConfirmed();
     }
 
     void HandlePlayer1Input()
     {
-        if (!player1Confirmed) 
+        if (!player1Confirmed)
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                player1Selection = Mathf.Max(0, player1Selection - 1);
+                player1Selection = Mathf.Max(0, player1Selection - 1); // Giảm lựa chọn của Player 1
                 UpdateSelection();
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                player1Selection = Mathf.Min(characterImages.Length - 1, player1Selection + 1);
+                player1Selection = Mathf.Min(characterImages.Length - 1, player1Selection + 1); // Tăng lựa chọn của Player 1
                 UpdateSelection();
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (player1Selection != player2Selection) 
+                if (player1Selection != player2Selection)
                 {
                     ConfirmSelection(1);
                 }
@@ -53,21 +52,21 @@ public class CharacterSelection : MonoBehaviour
 
     void HandlePlayer2Input()
     {
-        if (!player2Confirmed) 
+        if (!player2Confirmed)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                player2Selection = Mathf.Max(0, player2Selection - 1);
+                player2Selection = Mathf.Max(0, player2Selection - 1); // Giảm lựa chọn của Player 2
                 UpdateSelection();
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                player2Selection = Mathf.Min(characterImages.Length - 1, player2Selection + 1);
+                player2Selection = Mathf.Min(characterImages.Length - 1, player2Selection + 1); // Tăng lựa chọn của Player 2
                 UpdateSelection();
             }
             else if (Input.GetKeyDown(KeyCode.Return))
             {
-                if (player2Selection != player1Selection) 
+                if (player2Selection != player1Selection)
                 {
                     ConfirmSelection(2);
                 }
@@ -77,21 +76,68 @@ public class CharacterSelection : MonoBehaviour
 
     void ConfirmSelection(int player)
     {
+        int selectedPrefabIndex = 0;
         if (player == 1)
         {
+            // Kiểm tra tên của hình ảnh Player 1 đã chọn
+            if (characterImages[player1Selection].name == "Character1")
+            {
+                selectedPrefabIndex = 0; // Chọn element0 (tương ứng với character1)
+            }
+            else if (characterImages[player1Selection].name == "Character2")
+            {
+                selectedPrefabIndex = 1; // Chọn element1 (tương ứng với character2)
+            }
+            else if (characterImages[player1Selection].name == "Character3")
+            {
+                selectedPrefabIndex = 2; // Chọn element1 (tương ứng với character2)
+            }
+            else if (characterImages[player1Selection].name == "Character4")
+            {
+                selectedPrefabIndex = 3; // Chọn element1 (tương ứng với character2)
+            }
+            
+
             player1Confirmed = true;
-            Debug.Log("Player 1 ch?n nh�n v?t: " + characterImages[player1Selection].name);
-            //X? l� logic chuy?n nh�n v?t sang Bomberman Scence
-            // C?p nh?t h�nh ?nh trong b?ng ?i?m cho Player 1
-            //scoreboardManager.UpdateCharacterImages(characterImages[player1Selection].sprite, scoreboardManager.GetPlayer2Sprite());
+            Debug.Log("Player 1 chọn nhân vật: " + characterImages[player1Selection].name);
+            Debug.Log(selectedPrefabIndex);
+            //PlayerSpawner.Instance.SpawnPlayerWithSelection(1, selectedPrefabIndex);
+
+            GameDataNgu.Instance.player1 = selectedPrefabIndex;
+
+            Debug.Log("GAME DATA NGU PLAYER1" + GameDataNgu.Instance.player1);
+
         }
-        else
+        else if (player == 2)
         {
+            
+            if (characterImages[player2Selection].name == "Character1")
+            {
+                selectedPrefabIndex = 4; 
+            }
+            else if (characterImages[player2Selection].name == "Character2")
+            {
+                selectedPrefabIndex = 5; 
+            }else if (characterImages[player2Selection].name == "Character3")
+            {
+                selectedPrefabIndex = 6; 
+            }
+            else if (characterImages[player2Selection].name == "Character4")
+            {
+                selectedPrefabIndex = 7; 
+            }
+            
+
             player2Confirmed = true;
-            Debug.Log("Player 2 ch?n nh�n v?t: " + characterImages[player2Selection].name);
-            //X? l� logic chuy?n nh�n v?t sang Bomberman Scence
-            // C?p nh?t h�nh ?nh trong b?ng ?i?m cho Player 2
-            //scoreboardManager.UpdateCharacterImages(scoreboardManager.GetPlayer1Sprite(), characterImages[player2Selection].sprite);
+            Debug.Log("Player 2 chọn nhân vật: " + characterImages[player2Selection].name);
+            Debug.Log(selectedPrefabIndex);
+            
+
+            // Truyền lựa chọn của Player 2 sang PlayerSpawner
+            //PlayerSpawner.Instance.SpawnPlayerWithSelection(2, selectedPrefabIndex);
+            GameDataNgu.Instance.player2 = selectedPrefabIndex;
+            Debug.Log("GAME DATA NGU PLAYER2" + GameDataNgu.Instance.player2);
+
         }
     }
 
@@ -99,23 +145,19 @@ public class CharacterSelection : MonoBehaviour
     {
         if (player1Confirmed && player2Confirmed)
         {
-            
-            SceneManager.LoadScene("Bomberman"); 
+            Debug.Log("Cả hai người chơi đã xác nhận, chuyển sang cảnh Bomberman.");
+            SceneManager.LoadScene("SelectMap");
         }
     }
 
     void UpdateSelection()
     {
-      
         for (int i = 0; i < characterImages.Length; i++)
         {
             characterImages[i].color = (i == player1Selection || i == player2Selection) ? Color.gray : Color.white;
         }
 
-        
-        arrow1.transform.position = characterImages[player1Selection].transform.position + new Vector3(0, 140, 0); 
-
-        
-        arrow2.transform.position = characterImages[player2Selection].transform.position + new Vector3(0, 140, 0); 
+        arrow1.transform.position = characterImages[player1Selection].transform.position + new Vector3(0, 140, 0);
+        arrow2.transform.position = characterImages[player2Selection].transform.position + new Vector3(0, 140, 0);
     }
 }
