@@ -1,3 +1,4 @@
+
 ﻿
 //using System.Collections;
 //using System.Collections.Generic;
@@ -153,6 +154,7 @@ public class MapGenderer : MonoBehaviour
     public int SizeX;
     [SerializeField]
     public int SizeY;
+
    
     TileBase Destructible;
    
@@ -211,9 +213,11 @@ public class MapGenderer : MonoBehaviour
         player.GetComponent<BombController>().destructibleTiles = destructable;
         player.GetComponent<BombController>().explosionLayerMask = 1;
 
+
         GameObject map = new GameObject("MapGrid");
         map.transform.position = Vector3.zero;
         map.gameObject.AddComponent<Grid>();
+
 
         // Grass Layer
         GameObject grassObject = new GameObject("GrassLayer");
@@ -305,10 +309,12 @@ public class MapGenderer : MonoBehaviour
     {
 
 
+
         for (int x = 1; x < SizeX - 1; x++)
         {
             for (int y = 1; y < SizeY - 1; y++)
             {
+
                 
                 if ((x <= 1 && y <= 2) ||            
                     (x <= 1 && y >= SizeY - 3) ||    
@@ -329,11 +335,13 @@ public class MapGenderer : MonoBehaviour
     }
 
     void IndestructibleBuild()
+
     {
         for (int x = 1; x < SizeX - 1; x++)
         {
             for (int y = 1; y < SizeY - 1; y++)
             {
+
                 if ((x <= 1 && y <= 2) ||            
                     (x <= 1 && y >= SizeY - 3) ||    
                     (x >= SizeX - 3 && y <= 2) ||    
@@ -355,4 +363,3 @@ public class MapGenderer : MonoBehaviour
     }
 
 }
-
